@@ -42,48 +42,48 @@ describe("数组Diff", () => {
 		expect(patch.mock.calls[1][0]).toBe("b");
 	});
 	it("3. 老节点没了，新节点还有", () => {
-	  const mountElement = jest.fn();
-	  const patch = jest.fn();
-	  const unmount = jest.fn();
-	  const move = jest.fn();
-	  const { diffArray } = require("../src/vue_diff");
-	  diffArray(
-	    [{ key: "a" }, { key: "b" }],
-	    [{ key: "a" }, { key: "b" }, { key: "c" }],
-	    {
-	      mountElement,
-	      patch,
-	      unmount,
-	      move,
-	    }
-	  );
-	  expect(patch.mock.calls.length).toBe(2);
-	  expect(patch.mock.calls[0][0]).toBe("a");
-	  expect(patch.mock.calls[1][0]).toBe("b");
-	  expect(mountElement.mock.calls[0][0]).toBe("c");
+		const mountElement = jest.fn();
+		const patch = jest.fn();
+		const unmount = jest.fn();
+		const move = jest.fn();
+		const { diffArray } = require("../src/vue_diff");
+		diffArray(
+			[{ key: "a" }, { key: "b" }],
+			[{ key: "a" }, { key: "b" }, { key: "c" }],
+			{
+				mountElement,
+				patch,
+				unmount,
+				move,
+			}
+		);
+		expect(patch.mock.calls.length).toBe(2);
+		expect(patch.mock.calls[0][0]).toBe("a");
+		expect(patch.mock.calls[1][0]).toBe("b");
+		expect(mountElement.mock.calls[0][0]).toBe("c");
 	});
 	it("4. 老节点还有，新节点没了", () => {
-	  const mountElement = jest.fn();
-	  const patch = jest.fn();
-	  const unmount = jest.fn();
-	  const move = jest.fn();
-	  const { diffArray } = require("../src/vue_diff");
-	  diffArray(
-	    [{ key: "a" }, { key: "b" }, { key: "c" }],
-	    [{ key: "a" }, { key: "b" }],
-	    {
-	      mountElement,
-	      patch,
-	      unmount,
-	      move,
-	    }
-	  );
-	  // 第一次调用次数
-	  expect(patch.mock.calls.length).toBe(2);
-	  // 第一次调用的第一个参数
-	  expect(patch.mock.calls[0][0]).toBe("a");
-	  expect(patch.mock.calls[1][0]).toBe("b");
-	  expect(unmount.mock.calls[0][0]).toBe("c");
+		const mountElement = jest.fn();
+		const patch = jest.fn();
+		const unmount = jest.fn();
+		const move = jest.fn();
+		const { diffArray } = require("../src/vue_diff");
+		diffArray(
+			[{ key: "a" }, { key: "b" }, { key: "c" }],
+			[{ key: "a" }, { key: "b" }],
+			{
+				mountElement,
+				patch,
+				unmount,
+				move,
+			}
+		);
+		// 第一次调用次数
+		expect(patch.mock.calls.length).toBe(2);
+		// 第一次调用的第一个参数
+		expect(patch.mock.calls[0][0]).toBe("a");
+		expect(patch.mock.calls[1][0]).toBe("b");
+		expect(unmount.mock.calls[0][0]).toBe("c");
 	});
 	// it("5. 新老节点都有，但是顺序不稳定", () => {
 	//   const mountElement = jest.fn();
@@ -143,7 +143,7 @@ describe("数组Diff", () => {
 	//   // expect(move.mock.calls[0][0]).toBe("d");
 	//   // expect(move.mock.calls[1][0]).toBe("e");
 	// });
-	it.skip("6. 新老节点都有，但是顺序不稳定", () => {
+	it("6. 新老节点都有，但是顺序不稳定", () => {
 		const mountElement = jest.fn();
 		const patch = jest.fn();
 		const unmount = jest.fn();
